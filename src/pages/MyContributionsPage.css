@@ -1,0 +1,142 @@
+/* --- Custom CSS Properties (Variables) --- */
+:root {
+  --primary-green: #2E7D32;
+  --light-green-bg: #e8f5e9;
+  --orange: #FF9800;
+  --light-orange-bg: #fff3e0;
+  --blue: #2196F3;
+  --light-blue-bg: #e3f2fd;
+  --bg-color: #f4f7f6;
+  --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  --border-radius: 12px;
+}
+
+/* --- Main Page Layout --- */
+.contributions-page {
+  background-color: var(--bg-color);
+  padding: 40px;
+  min-height: calc(100vh - 80px);
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+.page-header h2 { font-size: 2.5rem; margin: 0 0 5px 0; }
+.page-header p { font-size: 1.1rem; color: #666; margin: 0; }
+
+/* --- Impact Dashboard --- */
+.impact-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+.impact-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+.impact-icon { font-size: 2.5rem; }
+.icon-donations { color: var(--primary-green); }
+.icon-claims { color: var(--orange); }
+.impact-info .number { font-size: 2.5rem; font-weight: bold; margin: 0; }
+.impact-info .label { font-size: 1rem; color: #777; margin: 0; }
+
+/* --- Filter Controls --- */
+.filter-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.filter-btn {
+  background-color: #fff;
+  border: 2px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-btn:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+}
+.filter-btn.active {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  color: white;
+}
+
+/* --- Contributions List --- */
+.contributions-grid {
+  display: grid;
+  gap: 25px;
+}
+.contribution-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--card-shadow);
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Icon | Content | Status */
+  align-items: center;
+  gap: 20px;
+  border-left: 5px solid;
+  transition: transform 0.3s ease;
+}
+.contribution-card:hover {
+  transform: scale(1.02);
+}
+.contribution-card.type-donation { border-color: var(--primary-green); }
+.contribution-card.type-claim { border-color: var(--orange); }
+
+.contribution-icon { font-size: 2rem; }
+.contribution-info h4 { margin: 0 0 5px 0; font-size: 1.2rem; }
+.contribution-info p { margin: 0; color: #777; }
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.status-claimed { background-color: var(--light-blue-bg); color: var(--blue); }
+.status-pending-pickup { background-color: var(--light-orange-bg); color: var(--orange); }
+.status-completed { background-color: var(--light-green-bg); color: var(--primary-green); }
+
+/* --- Skeleton & Empty States --- */
+.skeleton-card {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--card-shadow);
+  height: 95px;
+  position: relative;
+  overflow: hidden;
+}
+.skeleton-line {
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.skeleton-line.short { width: 60%; }
+.skeleton-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%; width: 150%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }

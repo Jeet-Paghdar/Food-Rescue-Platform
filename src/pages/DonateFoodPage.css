@@ -1,0 +1,165 @@
+/* --- Main Page Wrapper --- */
+.donate-page-wrapper {
+  background-color: #f4f7f6;
+  min-height: calc(100vh - 80px); /* Full height minus navbar */
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* --- Form Container --- */
+.form-container {
+  max-width: 600px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  overflow: hidden; /* Important for step transitions */
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #2E7D32;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+/* --- Progress Bar --- */
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  position: relative;
+}
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+.progress-bar .progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  background-color: #4CAF50;
+  z-index: 2;
+  transition: width 0.4s ease-in-out;
+}
+
+.step-indicator {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  position: relative;
+  z-index: 3;
+  transition: all 0.4s ease-in-out;
+}
+.step-indicator.active {
+  background-color: #4CAF50;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* --- Form Steps & Transitions --- */
+.form-step {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Advanced Input Styling (Floating Labels) --- */
+.form-group {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.form-input {
+  width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 1rem;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.floating-label {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+/* This is the magic for the floating label */
+.form-input:focus + .floating-label,
+.form-input:not(:placeholder-shown) + .floating-label {
+  top: -10px;
+  left: 12px;
+  font-size: 0.8rem;
+  background-color: white;
+  padding: 0 4px;
+  color: #4CAF50;
+}
+
+/* --- Button Navigation --- */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.form-btn {
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.btn-secondary:hover {
+  background-color: #ccc;
+}
+.btn-secondary:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+.btn-primary:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}

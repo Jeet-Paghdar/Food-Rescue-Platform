@@ -1,0 +1,97 @@
+/* src/pages/LoginPage.css */
+.login-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Full height minus navbar */
+  background-color: #f4f7f6;
+  padding: 40px 20px;
+}
+
+.login-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: #2E7D32;
+}
+
+.login-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: #2E7D32;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #1b5e20;
+}
+
+.signup-link {
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #2E7D32;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Re-usable form styles */
+.form-group {
+  position: relative;
+  margin-bottom: 35px;
+  text-align: left;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.floating-label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 1rem;
+  color: #999;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-input:focus {
+  border-bottom-color: #2E7D32;
+}
+
+.form-input:focus ~ .floating-label,
+.form-input:not(:placeholder-shown) ~ .floating-label {
+  top: -15px;
+  font-size: 0.8rem;
+  color: #2E7D32;
+}
