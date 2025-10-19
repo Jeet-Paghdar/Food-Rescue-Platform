@@ -43,3 +43,4 @@ function App() {
 }
 
 export default App;
+// Issue #2: Frontend logic connected
