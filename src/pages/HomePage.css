@@ -55,7 +55,7 @@
 }
 
 .hero-button {
-  background-color: #2E7D32;
+  background-color: #2E7D32;  /*The color is modified now*/
   color: white;
   padding: 16px 38px;
   border-radius: 12px;
@@ -74,7 +74,7 @@
 
 /* --- Base styles for all sections --- */
 .homepage-section {
-  padding: 80px 20px;
+  padding: 60px 20px;  /*The spacings are changed here*/
   text-align: center;
 }
 
@@ -200,6 +200,13 @@
 
 .step-card p {
   color: #666;
+}
+
+/*HOVER EFFECT IS ADDED*/
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 /* --- "Trusted By Partners" Section (with scrolling text) --- */
