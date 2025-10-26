@@ -1,10 +1,60 @@
 /* ==========================================================================
-   Homepage Styles (Final Corrected Version)
+   THEME VARIABLES - Add this at the TOP of your CSS file
+   ========================================================================== */
+
+:root {
+  /* Light Theme (Default) */
+  --bg-primary: #f4f7f6;
+  --bg-secondary: #ffffff;
+  --bg-accent: #e8f5e9;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-tertiary: #777;
+  --text-muted: #757575;
+  --brand-primary: #2E7D32;
+  --brand-secondary: #4CAF50;
+  --brand-hover: #1b5e20;
+  --card-bg: #fff;
+  --card-border: #eee;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --hero-overlay: rgba(255, 255, 255, 0.88);
+  --dot-pattern: #dceddd;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #1a2e1b;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #999;
+  --text-muted: #888;
+  --brand-primary: #66BB6A;
+  --brand-secondary: #81C784;
+  --brand-hover: #4CAF50;
+  --card-bg: #2a2a2a;
+  --card-border: #3a3a3a;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --hero-overlay: rgba(30, 30, 30, 0.92);
+  --dot-pattern: #2a3a2b;
+}
+
+/* Smooth transitions for theme switching */
+body, .homepage-wrapper, .hero-container, .featured-card, 
+.how-it-works-section, .testimonials-section, .step-card,
+.homepage-section, .partner-name {
+  transition: background-color 0.3s ease, color 0.3s ease, 
+              border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ==========================================================================
+   MODIFIED HOMEPAGE STYLES - Replace your existing styles with these
    ========================================================================== */
 
 /* --- Main Page Container --- */
 .homepage-wrapper {
-  background-color: #f4f7f6;
+  background-color: var(--bg-primary);
   padding-top: 40px;
   padding-bottom: 1px;
 }
@@ -18,7 +68,7 @@
   text-align: center;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--card-shadow);
 }
 
 .hero-container::before {
@@ -29,7 +79,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+  background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
     url("https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop");
   background-size: cover;
   background-position: center;
@@ -41,13 +91,13 @@
 }
 
 .hero-content h1 {
-  color: #2E7D32;
+  color: var(--brand-primary);
   font-size: 3.5rem;
   font-weight: 800;
 }
 
 .hero-content p {
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.3rem;
   max-width: 650px;
   margin: 1rem auto 2.5rem auto;
@@ -55,7 +105,7 @@
 }
 
 .hero-button {
-  background-color: #2E7D32;  /*The color is modified now*/
+  background-color: var(--brand-primary);
   color: white;
   padding: 16px 38px;
   border-radius: 12px;
@@ -67,33 +117,33 @@
 }
 
 .hero-button:hover {
-  background-color: #1b5e20;
+  background-color: var(--brand-hover);
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(46, 125, 50, 0.45);
 }
 
 /* --- Base styles for all sections --- */
 .homepage-section {
-  padding: 60px 20px;  /*The spacings are changed here*/
+  padding: 60px 20px;
   text-align: center;
 }
 
 .section-title {
   font-size: 2.8rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto 4rem auto;
 }
 
 /* --- Featured Donations Section --- */
 .featured-section {
-  background-color: #ffffff;
+  background-color: var(--bg-secondary);
   padding: 80px 20px;
   text-align: center;
 }
@@ -107,18 +157,18 @@
 }
 
 .featured-card {
-  background-color: #fff;
+  background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px var(--card-shadow);
   text-align: left;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #eee;
+  border: 1px solid var(--card-border);
 }
 
 .featured-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px var(--card-shadow);
 }
 
 .featured-card-content {
@@ -128,11 +178,11 @@
 .featured-card h4 {
   font-size: 1.3rem;
   margin: 0 0 10px 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .featured-card p {
-  color: #777;
+  color: var(--text-tertiary);
   margin: 4px 0;
   display: flex;
   align-items: center;
@@ -142,15 +192,15 @@
 .featured-card-footer {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--card-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .view-details-btn {
-  background-color: #e8f5e9;
-  color: #2E7D32;
+  background-color: var(--bg-accent);
+  color: var(--brand-primary);
   padding: 8px 16px;
   border-radius: 8px;
   text-decoration: none;
@@ -159,7 +209,7 @@
 }
 
 .view-details-btn:hover {
-  background-color: #2E7D32;
+  background-color: var(--brand-primary);
   color: #fff;
 }
 
@@ -171,11 +221,11 @@
 
 /* --- "How It Works" Section --- */
 .how-it-works-section {
-  background-color: #fff;
+  background-color: var(--bg-secondary);
   max-width: 1200px;
   margin: 60px auto;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 30px var(--card-shadow);
 }
 
 .steps-grid {
@@ -188,28 +238,27 @@
 
 .step-icon {
   font-size: 4rem;
-  color: #4CAF50;
+  color: var(--brand-secondary);
   margin-bottom: 1rem;
 }
 
 .step-card h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .step-card p {
-  color: #666;
+  color: var(--text-secondary);
 }
 
-/*HOVER EFFECT IS ADDED*/
 .step-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px var(--card-shadow);
   transition: all 0.3s ease;
 }
 
-/* --- "Trusted By Partners" Section (with scrolling text) --- */
+/* --- "Trusted By Partners" Section --- */
 .partners-section {
   padding: 60px 0;
   text-align: center;
@@ -217,7 +266,7 @@
 }
 
 .partners-section h3 {
-  color: #757575;
+  color: var(--text-muted);
   font-weight: 500;
   margin-bottom: 3rem;
   font-size: 1.2rem;
@@ -229,20 +278,20 @@
 
 .logos-slide {
   display: inline-block;
-  animation: marquee 25s linear infinite; /* Animation for scrolling */
+  animation: marquee 25s linear infinite;
 }
 
 .partner-name {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #aaa; /* A subtle grey color */
-  margin: 0 45px; /* Space between names */
+  color: var(--text-muted);
+  margin: 0 45px;
   display: inline-block;
   transition: color 0.3s ease;
 }
 
 .partner-name:hover {
-  color: #333;
+  color: var(--text-primary);
 }
 
 @keyframes marquee {
@@ -256,8 +305,8 @@
 
 /* --- Impact Section --- */
 .impact-section {
-  background-color: #e8f5e9;
-  background-image: radial-gradient(#dceddd 1px, transparent 1px);
+  background-color: var(--bg-accent);
+  background-image: radial-gradient(var(--dot-pattern) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -273,21 +322,21 @@
 .impact-stat .number {
   font-size: 3.5rem;
   font-weight: bold;
-  color: #2E7D32;
+  color: var(--brand-primary);
 }
 
 .impact-stat .label {
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 /* --- Testimonials Section --- */
 .testimonials-section {
-  background-color: #fff;
+  background-color: var(--bg-secondary);
   max-width: 1200px;
   margin: 60px auto;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 30px var(--card-shadow);
 }
 
 .testimonials-grid {
@@ -298,15 +347,15 @@
 
 .testimonial-card p.quote {
   font-style: italic;
-  color: #555;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  border-left: 3px solid #4CAF50;
+  border-left: 3px solid var(--brand-secondary);
   padding-left: 1rem;
 }
 
 .testimonial-card p.author {
   font-weight: bold;
-  color: #2E7D32;
+  color: var(--brand-primary);
   margin: 0;
 }
 
@@ -318,10 +367,11 @@
 
 .final-cta-section h2 {
   font-size: 2.8rem;
+  color: var(--text-primary);
 }
 
 .cta-button-final {
-  background-color: #4CAF50;
+  background-color: var(--brand-secondary);
   color: white;
   padding: 16px 38px;
   border-radius: 50px;
@@ -333,9 +383,37 @@
 }
 
 .cta-button-final:hover {
-  background-color: #1b5e20;
+  background-color: var(--brand-hover);
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Theme Toggle Button Styles --- */
+.theme-toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-toggle-btn {
+  background-color: var(--card-bg);
+  border: 2px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px var(--card-shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px var(--card-shadow);
 }
 
 /* --- Responsive Design --- */
@@ -345,5 +423,9 @@
   }
   .section-title {
     font-size: 2.2rem;
+  }
+  .theme-toggle-container {
+    top: 10px;
+    right: 10px;
   }
 }
