@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
@@ -31,6 +31,22 @@ const FeaturedCard = ({ item }) => {
 
 function HomePage() {
   const { contributions } = useFood();
+  
+  // Theme toggle state
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') || 'light'
+  );
+
+  // Apply theme when it changes
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  // Toggle between light and dark
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   const featuredItems = useMemo(() => {
     return contributions
@@ -40,6 +56,14 @@ function HomePage() {
 
   return (
     <div className="homepage-wrapper">
+      {/* Theme Toggle Button - Floating in corner */}
+      <div className="theme-toggle-container">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          <span id="theme-icon">{theme === 'light' ? '🌙' : '☀️'}</span>
+          <span>Theme</span>
+        </button>
+      </div>
+
       <section className="hero-container">
         <div className="hero-content">
           <h1>End Hunger, Not Food.</h1>
@@ -80,7 +104,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* --- THIS SECTION IS UPDATED TO USE TEXT NAMES --- */}
       <section className="partners-section">
         <h3>Trusted By Generous Partners Across India</h3>
         <div className="logos-marquee">
