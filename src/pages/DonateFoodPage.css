@@ -1,6 +1,6 @@
 /* --- Main Page Wrapper --- */
 .donate-page-wrapper {
-  background-color: #f4f7f6;
+  background-color: #f7faf9;
   min-height: calc(100vh - 80px); /* Full height minus navbar */
   padding: 50px 20px;
   display: flex;
